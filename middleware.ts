@@ -4,7 +4,7 @@ const isPublicRoute = createRouteMatcher(["/", "/sign-in(.*)", "/sign-up(.*)"]);
 
 const middlewareOptions = {
   authorizedParties: ["http://localhost:3000"],
-  clockSkewInMs: 30000, // Adjust as needed, e.g., 10 seconds
+  clockSkewInMs: 24000, // Adjust as needed, e.g., 10 seconds
 };
 
 export default clerkMiddleware(async (auth, req) => {
