@@ -81,7 +81,7 @@ const MobileNav = () => {
             <span className="text-primary-500">Overflow</span>
           </p>
         </Link>
-        <div>
+        <div className="flex flex-col justify-between">
           <SheetClose asChild>
             <NavContent />
           </SheetClose>
