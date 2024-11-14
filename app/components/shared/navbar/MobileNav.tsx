@@ -6,6 +6,7 @@ import {
   SheetContent,
   SheetClose,
   SheetTrigger,
+  SheetTitle,
 } from "@/components/ui/sheet";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,6 +55,7 @@ const NavContent = () => {
 const MobileNav = () => {
   return (
     <Sheet>
+      <SheetTitle></SheetTitle>
       <SheetTrigger>
         <Image
           src="assets/icons/hamburger.svg"
