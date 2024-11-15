@@ -11,7 +11,7 @@ interface Props {
 }
 
 const LocalSearch = ({
-  route,
+  // route
   iconPosition,
   imgSrc,
   placeholder,
