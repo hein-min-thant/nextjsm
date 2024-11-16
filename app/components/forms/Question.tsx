@@ -19,6 +19,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import Image from "next/image";
+import { createQuestion } from "@/lib/question.action";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const type: any = "create";
@@ -37,11 +38,12 @@ const Question = () => {
 
   // 2. Define a submit handler.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function onSubmit(values: z.infer<typeof QuestionSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionSchema>) {
     setSubmitting(true);
     try {
       // api
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      await createQuestion({});
     } catch (error) {
     } finally {
       setSubmitting(false);
@@ -116,7 +118,7 @@ const Question = () => {
         <FormField
           control={form.control}
           name="explanation"
-          render={() => (
+          render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
               <FormLabel className="paragraph-semibold text-dark400_light800">
                 Detailed explanation of your problem{" "}
@@ -129,6 +131,8 @@ const Question = () => {
                     // @ts-expect-error WE CANT DO ANYING
                     (editorRef.current = editor)
                   }
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => field.onChange(content)}
                   initialValue="<p>This is the initial content of the editor.</p>"
                   init={{
                     height: 350,
